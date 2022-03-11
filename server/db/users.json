@@ -1,0 +1,16 @@
+[
+    {
+        "id": 1,
+        "username": "abdugani",
+        "age": 17,
+        "password": "abdugani",
+        "avatar": "https://www.bootdey.com/img/Content/avatar/avatar4.png"
+    },
+    {
+        "id": 2,
+        "username": "anvar",
+        "age": 17,
+        "password": "abdugani",
+        "avatar": "https://www.bootdey.com/img/Content/avatar/avatar2.png"
+    }
+]
