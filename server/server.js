@@ -70,7 +70,7 @@ const server = createServer((req, res) => {
                     )
                 }
                 console.log(data);
-                const check = postHandlers[parsed.pathname.slice(1)](data)
+                const check = postHandlers[parsed.pathname.slice(1)]?.(data)
                 if (!!check != true){
                     return res.end(JSON.stringify({
                         OK: false,

@@ -4,13 +4,13 @@
         "username": "abdugani",
         "age": 17,
         "password": "abdugani",
-        "avatar": "https://www.bootdey.com/img/Content/avatar/avatar4.png"
+        "avatar": "https://www.bootdey.com/img/Content/avatar/avatar3.png"
     },
     {
         "id": 2,
-        "username": "anvar",
+        "username": "testing",
         "age": 17,
         "password": "abdugani",
-        "avatar": "https://www.bootdey.com/img/Content/avatar/avatar2.png"
+        "avatar": "https://www.bootdey.com/img/Content/avatar/avatar3.png"
     }
 ]

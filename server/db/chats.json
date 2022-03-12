@@ -1,6 +1,7 @@
 [
     {
         "id": 1,
+        "username": "abdugani",
         "chats": [
             {
                 "id": 2
@@ -9,6 +10,7 @@
     },
     {
         "id": 2,
+        "username": "testing",
         "chats": [
             {
                 "id": 1
