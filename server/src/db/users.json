@@ -1,0 +1,20 @@
+[
+    {
+        "id": 1,
+        "firstname": "Abdug'ani",
+        "lastname": "Toshmuhammedov",
+        "age": 17,
+        "username": "abdugani",
+        "password": "abdugani",
+        "avatar": "https://raw.githubusercontent.com/Ashwinvalento/cartoon-avatar/master/lib/images/male/86.png"
+    },
+    {
+        "id": 2,
+        "firstname": "Ali",
+        "lastname": "Ikromov",
+        "username": "ali0523",
+        "age": 17,
+        "password": "ali0523",
+        "avatar": "https://raw.githubusercontent.com/Ashwinvalento/cartoon-avatar/master/lib/images/male/89.png"
+    }
+]

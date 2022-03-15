@@ -1,0 +1,23 @@
+[
+    {
+        "conversationId": 1,
+        "messages": [
+            {
+                "from": 1,
+                "text": "Hello!",
+                "date": {
+                    "localeDate": "3/15/2022",
+                    "localeTime": "8:20:53 PM"
+                }
+            },
+            {
+                "from": 2,
+                "text": "Hi!",
+                "date": {
+                    "localeDate": "3/15/2022",
+                    "localeTime": "8:22:53 PM"
+                }
+            }
+        ]
+    }
+]

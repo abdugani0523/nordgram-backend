@@ -1,0 +1,23 @@
+{
+  "name": "server",
+  "version": "1.0.0",
+  "description": "",
+  "type": "module",
+  "main": "server.js",
+  "scripts": {
+    "test": "npx nodemon ./server/server.js",
+    "start": "node ./server/server.js"
+  },
+  "keywords": [
+    "chat-app"
+  ],
+  "author": "Abdug'ani Toshmuhammedov",
+  "license": "MIT",
+  "devDependencies": {
+    "dotenv": "^16.0.0",
+    "nodemon": "^2.0.15"
+  },
+  "dependencies": {
+    "cartoon-avatar": "^1.0.2"
+  }
+}
