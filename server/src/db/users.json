@@ -28,5 +28,15 @@
         "username": "tulqin",
         "password": "c78d285de84881c21de929774fd9576b765bedfe",
         "avatar": "https://raw.githubusercontent.com/Ashwinvalento/cartoon-avatar/master/lib/images/male/39.png"
+    },
+    {
+        "id": 4,
+        "firstname": "John",
+        "lastname": "Doe",
+        "age": 17,
+        "gender": true,
+        "username": "johnboy",
+        "password": "42f0421a055bee65e40fb1641310151cb2e4823d",
+        "avatar": "https://raw.githubusercontent.com/Ashwinvalento/cartoon-avatar/master/lib/images/male/19.png"
     }
 ]

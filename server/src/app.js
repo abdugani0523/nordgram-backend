@@ -1,6 +1,7 @@
 import { parseQuery, loadBody, done, reject } from './lib/index.js'
 import { usersApi } from './api/users.js'
-// import { users } from './api/chats.js'
+import { chatsApi } from './api/chats.js'
+import { checkStatic } from './api/static.js';
 
 
 export async function Server (req, res) {
@@ -9,9 +10,16 @@ export async function Server (req, res) {
 
     switch (req.method) {
         case 'GET': {
+            const isStatic = checkStatic(req.url)
+            if (isStatic) {
+                res.writeHead(200, { 'Content-Type': isStatic.type })
+                return res.end(isStatic.data)
+            }
 
             switch (req.pathname) {
+                // case '/': return rootApi(req, res)
                 case '/users': return usersApi.get(req, res)
+                case '/chats': return chatsApi.get(req, res)
             }
             break;
         }
@@ -25,8 +33,9 @@ export async function Server (req, res) {
                 return reject(res, 'Invalid request body!');
             }
 
-            switch(req.pathname) {
-                case '/users': return usersApi.post(req, res);
+            switch (req.pathname) {
+                case '/users': return usersApi.post(req, res)
+                case '/chats': return chatsApi.post(req, res)
             }
 
             break;
@@ -35,93 +44,3 @@ export async function Server (req, res) {
     }
     reject(res, `You cannot ${req.method} ${req.url}`);
 }
-
-// export function Server (req, res) {
-//     res.setHeader("Access-Control-Allow-Origin", "*")
-    
-//     res.setHeader("Content-Type", "application/json")
-//     // needed data
-//     let method = req.method;
-//     let url = req.url
-
-//     // handlers
-    
-//     const parsed = parse(url, true)
-//     let query = parsed.query    
-//     switch (method) {
-//         case 'GET': {
-//             if (parsed.pathname === '/users' || parsed.pathname === '/chats' || parsed.pathname === '/messages'){
-//                 let data;
-//                 if (Object.keys(query).length !== 0){
-//                     data =  JSON.parse(readFile(parsed.pathname.slice(1), true))
-//                     data = data.find(item => {
-//                         let sign = true;
-//                         for (let i in query){
-//                             if (item[i] != query[i]){
-//                                 sign = false;
-//                                 break;
-//                             }
-//                         }
-//                         return sign;
-//                     })
-//                     if (!data) return res.end(JSON.stringify({
-//                         OK: false,
-//                         message: "Not found"
-//                     }))
-//                     data.OK = true
-//                     res.end(JSON.stringify(data))
-//                 } else {
-//                     data =  readFile(parsed.pathname.slice(1))
-//                     res.end(data)
-//                 }   
-//             } else {
-//                 res.end(JSON.stringify({
-//                     OK: false,
-//                     message: "Cannot get " + parsed.pathname
-//                 }))
-//             }
-//             break;
-//         }
-
-//         case 'POST': {
-//             if (parsed.pathname != '/users' && parsed.pathname != '/messages' && parsed.pathname != '/chats') return res.end('[]')
-
-//             let data = ''
-//             req.on('data', chunk => {
-//                 data += chunk;
-//             })
-//             req.on('end', () => {
-//                 try {
-//                     data = JSON.parse(data)
-//                 } catch (err) {
-//                     return res.end(
-//                         JSON.stringify({
-//                             OK: false,
-//                             title: 'Parse error',
-//                             message: err.message
-//                         })
-//                     )
-//                 }
-//                 console.log(data);
-//                 const check = postHandlers[parsed.pathname.slice(1)]?.(data)
-//                 if (!!check != true){
-//                     return res.end(JSON.stringify({
-//                         OK: false,
-//                         message: "Failed"
-//                     }))                  
-//                 }
-//                 res.end(JSON.stringify({
-//                     OK: true,
-//                     message: "Successfully",
-//                     data: check
-//                 }))                  
-//             })
-//             break;
-//         }
-//         case 'OPTIONS': {
-//             res.setHeader("Access-Control-Allow-Headers", "*")
-//             res.end('[]')
-//             break;
-//         }
-//     }
-// }
