@@ -1,6 +1,10 @@
 [
     {
-        "conversationId": 1,
+        "id": 1,
+        "members": [
+            1,
+            2
+        ],
         "messages": [
             {
                 "from": 1,
@@ -19,5 +23,5 @@
                 }
             }
         ]
-    }
+    }    
 ]

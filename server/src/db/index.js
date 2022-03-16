@@ -1,10 +1,19 @@
+import {fileURLToPath} from 'url';
 import { readFileSync, writeFileSync, existsSync } from 'fs';
-import { join } from 'path'
+import { join, dirname } from 'path'
 
-export function readFile (path, utf8) {
+const __filename = fileURLToPath(import.meta.url)
+const __dirname = dirname(__filename)
+
+
+export function readFile (path) {
     const databasePath = join(__dirname, path + '.json')
     if (!existsSync(databasePath)) throw new Error(`No such json file at ${path}!`)
-    return readFileSync(databasePath, utf8);
+    try {
+        return JSON.parse(readFileSync(databasePath, 'utf8'))
+    } catch (err) {
+        console.log(err.message)
+    } 
 }
 
 export function writeFile (path, data) {

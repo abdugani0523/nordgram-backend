@@ -4,17 +4,29 @@
         "firstname": "Abdug'ani",
         "lastname": "Toshmuhammedov",
         "age": 17,
+        "gender": true,
         "username": "abdugani",
-        "password": "abdugani",
+        "password": "d8af54ee42fd9a5434aa3e8079592330dc4acd39",
         "avatar": "https://raw.githubusercontent.com/Ashwinvalento/cartoon-avatar/master/lib/images/male/86.png"
     },
     {
         "id": 2,
         "firstname": "Ali",
         "lastname": "Ikromov",
-        "username": "ali0523",
         "age": 17,
-        "password": "ali0523",
+        "gender": true,
+        "username": "ali0523",
+        "password": "d8af54ee42fd9a5434aa3e8079592330dc4acd39",
         "avatar": "https://raw.githubusercontent.com/Ashwinvalento/cartoon-avatar/master/lib/images/male/89.png"
+    },
+    {
+        "id": 3,
+        "firstname": "Umar",
+        "lastname": "To'lqinboyev",
+        "age": 17,
+        "gender": true,
+        "username": "tulqin",
+        "password": "c78d285de84881c21de929774fd9576b765bedfe",
+        "avatar": "https://raw.githubusercontent.com/Ashwinvalento/cartoon-avatar/master/lib/images/male/39.png"
     }
 ]

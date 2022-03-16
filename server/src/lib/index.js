@@ -6,11 +6,14 @@ export function parseQuery (req) {
     req.pathname = pathname
 }
 
-export function loadBody (req) {
-    let body = '';
-    req.on('data', (data) => body += data);
-    req.on('end', () => req.body = body);
-}
+export async function loadBody (req) {
+    let buffers = [];
+    for await (const chunk of req) {
+        buffers.push(chunk)
+    }
+    const body = Buffer.concat(buffers).toString();
+    return body;
+}   
 
 export function reject(res, msg = 'Rejected') {
     res.writeHead(404, { 'Content-Type': 'application/json' })
