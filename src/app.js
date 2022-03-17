@@ -1,7 +1,6 @@
 import { parseQuery, loadBody, done, reject } from './lib/index.js'
 import { usersApi } from './api/users.js'
 import { chatsApi } from './api/chats.js'
-import { checkStatic } from './api/static.js';
 
 
 export async function Server (req, res) {
@@ -10,14 +9,7 @@ export async function Server (req, res) {
 
     switch (req.method) {
         case 'GET': {
-            const isStatic = checkStatic(req.url)
-            if (isStatic) {
-                res.writeHead(200, { 'Content-Type': isStatic.type })
-                return res.end(isStatic.data)
-            }
-
             switch (req.pathname) {
-                // case '/': return rootApi(req, res)
                 case '/users': return usersApi.get(req, res)
                 case '/chats': return chatsApi.get(req, res)
             }

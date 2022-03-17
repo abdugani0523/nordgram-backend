@@ -1,13 +1,10 @@
+import dotenv from 'dotenv'
 import { createServer } from "http";
-import { env } from './config/index.js'
 import { Server } from './src/app.js'
+dotenv.config()
 
-const PORT = env.PORT;
-const DOMAIN = env.DOMAIN
+const PORT = process.env.PORT ?? 5000;
 
 const server = createServer(Server)
-// const server = createServer((req, res) => {
-    
-// })
 
-server.listen(PORT, () => console.log(`http://${DOMAIN}:${PORT}`))
+server.listen(PORT, () => console.log(`http://localhost:${PORT}`))

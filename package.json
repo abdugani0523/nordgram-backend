@@ -3,10 +3,10 @@
   "version": "1.0.0",
   "description": "",
   "type": "module",
-  "main": "./server/server.js",
+  "main": "server.js",
   "scripts": {
-    "test": "npx nodemon ./server/server.js",
-    "start": "node ./server/server.js"
+    "test": "npx nodemon server.js",
+    "start": "node server.js"
   },
   "keywords": [
     "chat-app"
