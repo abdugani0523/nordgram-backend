@@ -1,23 +1,25 @@
 {
-  "name": "server",
-  "version": "1.0.0",
-  "description": "",
-  "type": "module",
-  "main": "server.js",
-  "scripts": {
-    "test": "npx nodemon server.js",
-    "start": "node server.js"
-  },
-  "keywords": [
-    "chat-app"
-  ],
-  "author": "Abdug'ani Toshmuhammedov",
-  "license": "MIT",
-  "devDependencies": {
-    "dotenv": "^16.0.0",
-    "nodemon": "^2.0.15"
-  },
-  "dependencies": {
-    "cartoon-avatar": "^1.0.2"
-  }
+    "name": "server",
+    "version": "1.0.0",
+    "description": "",
+    "type": "module",
+    "main": "server.js",
+    "scripts": {
+        "test": "npx nodemon server.js",
+        "start": "node server.js",
+        "format": "npx prettier --config .prettierrc --write ."
+    },
+    "keywords": [
+        "chat-app"
+    ],
+    "author": "Abdug'ani Toshmuhammedov",
+    "license": "MIT",
+    "devDependencies": {
+        "dotenv": "^16.0.0",
+        "nodemon": "^2.0.15",
+        "prettier": "^2.6.0"
+    },
+    "dependencies": {
+        "cartoon-avatar": "^1.0.2"
+    }
 }
