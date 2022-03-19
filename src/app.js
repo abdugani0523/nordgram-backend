@@ -17,11 +17,9 @@ export async function Server (req, res) {
         }
         case 'POST': {
             req.body = await loadBody(req);
-
             try {
                 req.body = JSON.parse(req.body) 
             } catch (err){
-                console.log(err.message)
                 return reject(res, 'Invalid request body!');
             }
 
@@ -31,6 +29,10 @@ export async function Server (req, res) {
             }
 
             break;
+        }
+        case 'OPTIONS': {
+            res.setHeader("Access-Control-Allow-Headers", "*");
+            return res.end()
         }
         default: return reject(res, `You cannot send a '${req.method}' request! `);
     }
