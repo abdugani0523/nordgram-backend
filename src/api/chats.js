@@ -52,7 +52,11 @@ export const chatsApi = {
         let chats = readFile('chats')
         let { body } = req
         // validation
-        if (Object.keys(body).length != 2 || typeof(body.to) != 'number' || typeof(body.from) != 'number')
+        if (
+            Object.keys(body).length != 2 ||
+            typeof body.to != 'number' ||
+            typeof body.from != 'number'
+        )
             return reject(res, 'Could not pass validation!')
         let members = [body.to, body.from]
         if (!checkMembers(members)) return reject(res, 'Member not found!')
@@ -62,9 +66,9 @@ export const chatsApi = {
         if (!findChat) {
             return reject(res, 'Chat not found!')
         }
-        //  
+        //
         findChat.messages = []
         writeFile('chats', chats)
         done(res, findChat)
-    }
+    },
 }
