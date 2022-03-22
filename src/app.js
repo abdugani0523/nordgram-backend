@@ -33,8 +33,39 @@ export async function Server(req, res) {
 
             break
         }
+        case 'DELETE': {
+            req.body = await loadBody(req)
+            try {
+                req.body = JSON.parse(req.body)
+            } catch (err) {
+                return reject(res, 'Invalid request body!')
+            }
+
+            switch (req.pathname) {
+                case '/chats':
+                    return chatsApi.delete(req, res)
+            }
+
+            break
+        }
+        case 'PUT': {
+            req.body = await loadBody(req)
+            try {
+                req.body = JSON.parse(req.body)
+            } catch (err) {
+                return reject(res, 'Invalid request body!')
+            }
+
+            switch (req.pathname) {
+                case '/chats':
+                    return chatsApi.put(req, res)
+            }
+
+            break
+        }
         case 'OPTIONS': {
             res.setHeader('Access-Control-Allow-Headers', '*')
+            res.setHeader('Access-Control-Allow-Methods', '*')
             return res.end()
         }
         default:

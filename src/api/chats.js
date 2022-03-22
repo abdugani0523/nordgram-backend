@@ -48,4 +48,23 @@ export const chatsApi = {
         writeFile('chats', chats)
         done(res, newMessage)
     },
+    put(req, res) {
+        let chats = readFile('chats')
+        let { body } = req
+        // validation
+        if (Object.keys(body).length != 2 || typeof(body.to) != 'number' || typeof(body.from) != 'number')
+            return reject(res, 'Could not pass validation!')
+        let members = [body.to, body.from]
+        if (!checkMembers(members)) return reject(res, 'Member not found!')
+        let findChat = chats.find((chat) =>
+            members.every((member) => chat.members.includes(member))
+        )
+        if (!findChat) {
+            return reject(res, 'Chat not found!')
+        }
+        //  
+        findChat.messages = []
+        writeFile('chats', chats)
+        done(res, findChat)
+    }
 }
