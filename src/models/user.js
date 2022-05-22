@@ -1,12 +1,16 @@
 import { DataTypes } from "sequelize";
-import { hash } from 'bcrypt'
+import { hash, compare } from 'bcrypt'
 
+const bcrypt_rounds = parseInt(process.env.bcrypt_rounds)
 export default sequelize => {
-    return sequelize.define('user', {
+    const UserModel = sequelize.define('user', {
         username: {
             type: DataTypes.STRING,
             allowNull: false,
-            unique: true,
+            unique: {
+                args: true,
+                msg: "This username is already registered!"
+            },
             validate: {
                 len: {
                     args: [4, 64],
@@ -20,7 +24,7 @@ export default sequelize => {
             allowNull: false,
             validate: {
                 len: {
-                    args: [8, 16],
+                    args: [8, 64],
                     msg: "Password length should not be less than 8 and not more than 16!"
                 }
             }
@@ -32,7 +36,14 @@ export default sequelize => {
     }, 
     {
         hooks: {
-            beforeCreate: async user => user.password = await hash(user.password, process.env.bcrypt_rounds)
+            async beforeCreate (user) {
+                user.password = await hash(user.password, bcrypt_rounds)
+                user.username = user.username.toLowerCase()
+            }
         }
     })
+    UserModel.prototype.validPassword = async (password, hash) => {
+        return await compare(password, hash);
+    };
+    return UserModel;
 }
